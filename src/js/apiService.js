@@ -1,5 +1,5 @@
-import refs from './js/refs';
-import markupImages from './tamplate/upImages.hbs';
+import refs from './refs';
+import markupImages from '../tamplate/upImages.hbs';
 
 export default {
   searchQuery: '',
