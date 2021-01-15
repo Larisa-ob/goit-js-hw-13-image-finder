@@ -2,8 +2,8 @@ import refs from '../js/refs';
 
 function onGalleryClick(event) {
   event.preventDefault();
-  getLargeImageSrc();
   let imageRef = '';
+
   refs.backmodal.addEventListener('click', onBackModalClick);
   refs.backdropRef.addEventListener('click', onBackModalClick);
   window.addEventListener('keydown', onPressEscape);
@@ -31,11 +31,12 @@ function onCloseModal() {
   refs.backdropRef.removeEventListener('click', onBackModalClick);
   refs.modalInput.classList.remove('is-open');
   getLargeImageSrc();
+  console.log();
 }
 
 function getLargeImageSrc() {
   const refmodal = refs.largeImage;
-  refmodal.src = ' ';
+  return (refmodal.src = ' ');
 }
 /* Функция 'клика на кнопку закрытия или оверлей*/
 function onBackModalClick(event) {

@@ -18,19 +18,23 @@ refs.searchForm.addEventListener('submit', event => {
   //вывод 12 элементов галереи
   apiService.fetchApiSearch().then(hits => {
     markupImages(hits);
-
     refs.loadMoreBtn.classList.remove('is-hidden');
-    window.scrollTo({
-      top: document.documentElement.offsetHeight,
-      behavior: 'smooth',
-    });
   });
 
   form.reset();
 });
 //при нажатии на вох запускаем промисс вызова
-refs.loadMoreBtn.addEventListener('click', () => {
-  apiService.fetchApiSearch().then(markupImages);
-});
+refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 /* кликаем на галлерею и переходим в модальное окно*/
 refs.galleryList.addEventListener('click', onGalleryClick);
+
+function onLoadMoreBtnClick() {
+  apiService.fetchApiSearch().then(images => {
+    markupImages(images);
+    window.scrollBy({
+      top: window.innerHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
+}

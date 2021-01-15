@@ -30,7 +30,9 @@ body {
 .search-form-input:focus {
   border-color: rebeccapurple;
 }
-
+.btn.is-hidden {
+  display: none;
+}
 .gallery {
   padding: 10px;
   margin: 0 auto;
@@ -72,9 +74,7 @@ body {
 .btn:focus {
   border-color: rebeccapurple;
 }
-.btn.is-hidden {
-  display: none;
-}
+
 /* Lightbox */
 .lightbox {
   display: flex;

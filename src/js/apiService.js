@@ -1,6 +1,7 @@
 import refs from './refs';
 import markupImages from '../tamplate/upImages.hbs';
-
+const festmodalsrc = '';
+refs.largeImage.src = festmodalsrc;
 export default {
   searchQuery: '',
   page: 1,
@@ -9,7 +10,10 @@ export default {
     const URL = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
 
     return fetch(URL)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) return response.json();
+        throw new Error(' ...');
+      })
       .then(({ hits }) => {
         const markup = markupImages(hits);
         refs.galleryList.insertAdjacentHTML('beforeend', markup);
